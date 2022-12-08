@@ -1,0 +1,20 @@
+metric: COCO
+num_classes: 1
+
+TrainDataset:
+  !COCODataSet
+  image_dir: JPEGImages
+  anno_path: train.json
+  dataset_dir: dataset/food_container
+  data_fields: [ 'image', 'gt_bbox', 'gt_class', 'is_crowd' ]
+
+EvalDataset:
+  !COCODataSet
+  image_dir: JPEGImages
+  anno_path: val.json
+  dataset_dir: dataset/food_container
+
+TestDataset:
+  !ImageFolder
+  anno_path: test.json
+  dataset_dir: dataset/food_container
