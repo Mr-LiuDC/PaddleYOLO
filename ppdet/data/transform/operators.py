@@ -452,6 +452,11 @@ class Decode(BaseOperator):
         except:
             im = sample['image']
 
+        try:
+            test_h = im.shape[0]
+        except:
+            print(im)
+
         sample['image'] = im
         if 'h' not in sample:
             sample['h'] = im.shape[0]

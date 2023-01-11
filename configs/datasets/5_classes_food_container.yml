@@ -1,0 +1,21 @@
+metric: VOC
+map_type: 11point
+num_classes: 5
+
+TrainDataset:
+  !VOCDataSet
+    dataset_dir: dataset/5_classes_food_container
+    anno_path: train_list.txt
+    label_list: label_list.txt
+    data_fields: ['image', 'gt_bbox', 'gt_class', 'difficult']
+
+EvalDataset:
+  !VOCDataSet
+    dataset_dir: dataset/5_classes_food_container
+    anno_path: test_list.txt
+    label_list: label_list.txt
+    data_fields: ['image', 'gt_bbox', 'gt_class', 'difficult']
+
+TestDataset:
+  !ImageFolder
+    anno_path: dataset/5_classes_food_container/label_list.txt
