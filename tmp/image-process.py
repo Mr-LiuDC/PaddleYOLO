@@ -10,7 +10,7 @@ for image in images:
     image_path = image_dir + image
     imgType = imghdr.what(image_path)
     print(imgType)
-    if imgType == 'gif':
+    if imgType == 'gif' or imgType == 'png':
         gif = cv2.VideoCapture(image_path)
         ret, frame = gif.read()
         cv2.imwrite(image_path, frame)
