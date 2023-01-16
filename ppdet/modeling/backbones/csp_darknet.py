@@ -159,6 +159,7 @@ class BottleNeck(nn.Layer):
                  in_channels,
                  out_channels,
                  shortcut=True,
+                 kernel_sizes=(1, 3),
                  expansion=0.5,
                  depthwise=False,
                  bias=False,
@@ -167,11 +168,16 @@ class BottleNeck(nn.Layer):
         hidden_channels = int(out_channels * expansion)
         Conv = DWConv if depthwise else BaseConv
         self.conv1 = BaseConv(
-            in_channels, hidden_channels, ksize=1, stride=1, bias=bias, act=act)
+            in_channels,
+            hidden_channels,
+            ksize=kernel_sizes[0],
+            stride=1,
+            bias=bias,
+            act=act)
         self.conv2 = Conv(
             hidden_channels,
             out_channels,
-            ksize=3,
+            ksize=kernel_sizes[1],
             stride=1,
             bias=bias,
             act=act)
